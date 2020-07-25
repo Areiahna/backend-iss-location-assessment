@@ -58,12 +58,12 @@ def get_coordinates():
         f'Timestamp: {time[0]} Latitude: {x} Longitude: {y}']
     print(display)
 
-    return ((float(x)), float(y))
+    return ((float(y)), float(x))
 
 
 def get_indianapolis_coords():
-    lat = 39.76
-    lon = 86.15
+    lat = 39.7684
+    lon = -86.1581
 
     RISE_TIME = r'\d\d\d\d+'
     URL = f'http://api.open-notify.org/iss-pass.json?lat={lat}&lon={lon}'
@@ -78,7 +78,7 @@ def get_indianapolis_coords():
 
 screen = turtle.Screen()
 screen.setup(720, 360)
-screen.setworldcoordinates(180, -90, -90, 180)
+screen.setworldcoordinates(-180, -90,  180, 90)
 
 
 bckg = "map.gif"
@@ -97,14 +97,16 @@ def main():
     print(time.ctime(indy_time))
 
     ISS = turtle.Turtle()
+    ISS.penup()
     ISS.shape(image)
     ISS.goto(ISS_coords)
 
     Indy_turtle = turtle.Turtle()
+    Indy_turtle.penup()
     Indy_turtle.shape('circle')
-    Indy_turtle.shapesize(1, 1)
+    Indy_turtle.shapesize(.5, .5)
     Indy_turtle.color('yellow')
-    Indy_turtle.goto(39.76, 86.15)
+    Indy_turtle.goto(-86.15, 39.76,)
     Indy_turtle.write(time.ctime(indy_time), font=8)
 
     # Indy_turtle2 = turtle.Turtle()
